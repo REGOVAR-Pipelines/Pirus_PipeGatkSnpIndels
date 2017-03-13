@@ -1,0 +1,27 @@
+name: hugodims
+channels:
+- bioconda
+- r
+- defaults
+- conda-forge
+dependencies:
+- bwa=0.7.15=0
+- fastqc=0.11.5=1
+- gatk=3.7=py35_0
+- java-jdk=8.0.92=1
+- samtools=1.3.1=5
+- snpeff=4.3=3
+- bzip2=1.0.6=3
+- curl=7.52.1=0
+- libgcc=5.2.0=0
+- openssl=1.0.2k=1
+- pip=9.0.1=py35_1
+- python=3.5.3=1
+- readline=6.2=2
+- setuptools=27.2.0=py35_0
+- sqlite=3.13.0=0
+- tk=8.5.18=0
+- wheel=0.29.0=py35_0
+- xz=5.2.2=1
+- zlib=1.2.8=3
+prefix: /home/dridk/miniconda3/envs/hugodims
