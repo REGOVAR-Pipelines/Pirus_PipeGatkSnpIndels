@@ -13,7 +13,7 @@ The gatk pipe for snp/indels (using haplotypecaller) implementation for Pirus
     lxc exec GatkHaplotypeCaller -- /bin/bash
 
     # following directories are mandatory
-    mkdir -p /pipeline/{run,inputs,outputs,logs,db,conda}
+    mkdir -p /pipeline/{inputs,outputs,logs,db,conda}
 
     # need curl if you want to notify server with the progress of your run
     apt update
@@ -46,3 +46,41 @@ The gatk pipe for snp/indels (using haplotypecaller) implementation for Pirus
     # 6 : activate the license
     gatk-register GenomeAnalysisTK-3.7.tar.bz2
 
+    # exit the container
+    exit
+
+    # stop it and create an image
+    lxc stop GatkHaplotypeCaller
+    lxc publish GatkHaplotypeCaller --alias=PirusGatkHaplotypeCaller
+    
+    lxc image export PirusGatkHaplotypeCaller
+    
+    # following command must be done as root to avoid image corruption 
+    # (as it will try to create symlink to computer resource in /dev folder by example)
+    sudo tar xf <the_name_of_lxc_export_something_like_a8d44d24fcs...8fzef54e5>.tar.gz
+
+    # append folowing informations into the metadata.yaml file (/!\ don't forget the "," in json dictionnary)
+    sudo nano metadata.yaml
+
+    # if json
+    "pirus":
+    {
+        "name" : "Gatk HaplotypeCaller",
+        "description" : "The GATK haplotypecaller pipeline for SNP and Indels.",
+        "version": "1.0.0",
+        "pirus_api": "1.0.0",
+        "license" : "AGPLv3",
+        "developers" : ["Anne-Sophie DENOMME-PICHON", "Jérémie ROQUET", "Olivier GUEUDELOT", "Sacha SCHUTZ"]
+        "run" : "/pipeline/conda/Pirus_PipeGatkSnpIndels/run.sh",
+        "inputs" : "/pipeline/inputs",
+        "outputs" : "/pipeline/outputs",
+        "databases" : "/pipeline/db",
+        "logs" : "/pipeline/logs",
+        "form" : "/pipeline/conda/Pirus_PipeGatkSnpIndels/form.json",
+        "icon" : "/pipeline/conda/Pirus_PipeGatkSnpIndels/gatk-logo.png"
+    }
+    
+    # Repackage the image in tar.xz
+    sudo tar cfJ PirusGatkHaplotypeCaller.tar.xz metadata.yaml rootfs templates
+    sudo rm -fr metadata.yaml rootfs templates
+    sudo chown olivier:olivier PirusGatkHaplotypeCaller.tar.xz
