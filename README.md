@@ -17,7 +17,7 @@ The gatk pipe for snp/indels (using haplotypecaller) implementation for Pirus
 
     # need curl if you want to notify server with the progress of your run
     apt update
-    apt install wget curl jq nano git --fix-missing
+    apt install wget curl jq nano git --fix-missing  # optional : graphviz (if you need to draw snakemake graph)
 
     # Install miniconda3
     cd /pipeline/conda
