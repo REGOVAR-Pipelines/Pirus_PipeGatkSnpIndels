@@ -1,0 +1,12 @@
+---
+ref: "__REF__"
+snpEff_ref : "__SNPEFF_REF__"
+dbsnp: "__DBSNP__"
+omni: "__OMNI__"
+mills: "__MILLS__"
+hapmap: "__HAPMAP__"
+_1000g: "__1000G__"
+workdir: "/pipeline/inputs"
+ram: "20"  # in Giga
+samples:
+__SAMPLES__
