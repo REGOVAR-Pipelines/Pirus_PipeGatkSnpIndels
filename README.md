@@ -70,7 +70,7 @@ The gatk pipe for snp/indels (using haplotypecaller) implementation for Pirus
         "version": "1.0.0",
         "pirus_api": "1.0.0",
         "license" : "AGPLv3",
-        "developers" : ["Anne-Sophie DENOMME-PICHON", "Jérémie ROQUET", "Olivier GUEUDELOT", "Sacha SCHUTZ"]
+        "developers" : ["Anne-Sophie DENOMME-PICHON", "Jérémie ROQUET", "Olivier GUEUDELOT", "Sacha SCHUTZ"],
         "run" : "/pipeline/conda/Pirus_PipeGatkSnpIndels/run.sh",
         "inputs" : "/pipeline/inputs",
         "outputs" : "/pipeline/outputs",
@@ -83,4 +83,4 @@ The gatk pipe for snp/indels (using haplotypecaller) implementation for Pirus
     # Repackage the image in tar.xz
     sudo tar cfJ PirusGatkHaplotypeCaller.tar.xz metadata.yaml rootfs templates
     sudo rm -fr metadata.yaml rootfs templates
-    sudo chown olivier:olivier PirusGatkHaplotypeCaller.tar.xz
+    sudo chown $USER:$USER PirusGatkHaplotypeCaller.tar.xz
