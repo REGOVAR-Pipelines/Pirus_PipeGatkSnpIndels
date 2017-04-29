@@ -1,12 +1,13 @@
 # Pirus_PipeGatkSnpIndels
 The gatk pipe for snp/indels (using haplotypecaller) implementation for Pirus
+__This pipeline is not yet stable and is still being worked on.__
 
-# Howto use it in a Pirus container
+# How to use it in a Pirus container
 ## Requirement
  * You need LXD on your computer to create it
  * You should read the official doc of Pirus and LXD (be sure that the LXD bridge is well configured. Your container will need to access to internet).
 
-##Instructions
+## Instructions
     # create a container
     lxc launch images:ubuntu/xenial GatkHaplotypeCaller
     # configure it
